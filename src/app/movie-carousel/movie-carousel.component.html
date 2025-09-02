@@ -1,0 +1,34 @@
+<!--  titolo della sezione -->
+<!-- <h2 class="mb-3">{{ title }}</h2> -->
+<!-- carosello film -->
+<!-- <div class="carousel-row">
+  @for (movie of movies; track movie.id) {
+  <div class="carousel-card"> -->
+<!-- Logo piccolo e posizionato -->
+<!-- <img src="logoLabRosso.png" alt="Logo" class="logo-overlay" /> -->
+
+<!-- Immagine del film con classe dedicata -->
+<!-- <img
+      src="{{ imageBaseUrl + movie.poster_path }}"
+      alt="{{ movie.title }}"
+      class="film-image"
+    />
+  </div>
+  }
+</div>  -->
+<!-- modale film: visibile solo se selectedMovie è definito -->
+<h2 class="mb-3">{{ title }}</h2>
+<div class="carousel-row">
+  @for (movie of movies; track movie.id) {
+  <div class="carousel-card" (click)="handleClick($event, movie)">
+    <!-- <div class="carousel-card" (click)="onClick(movie)"> -->
+    <img src="logoLabRosso.png" alt="Logo" class="logo-overlay" />
+    <img
+      [src]="imageBaseUrl + movie.poster_path"
+      [alt]="movie.title ? movie.title : 'Movie poster'"
+      title="{{ movie.title ? movie.title : 'Movie poster' }}"
+      class="film-image"
+    />
+  </div>
+  }
+</div>

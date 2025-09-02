@@ -1,0 +1,59 @@
+<div class="modal">
+  <ng-container *ngIf="fullDataLoaded; else loading">
+    <!-- tutto il contenuto della modale -->
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="modal-loading">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Caricamento dettagli...</span>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div class="modal-content">
+  <h2>{{ details.title }}</h2>
+  <p class="tagline" *ngIf="details.tagline">{{ details.tagline }}</p>
+  <p class="overview">{{ details.overview }}</p>
+
+  <p class="genres" *ngIf="details.genres?.length">
+    <strong>Genere:</strong> {{ details.genres | genreList }}
+  </p>
+
+  <p class="runtime" *ngIf="details.runtime">
+    <strong>Durata:</strong> {{ details.runtime }} min
+  </p>
+
+  <p class="rating">
+    <strong>Valutazione:</strong> ⭐
+    {{ details.vote_average | number : "1.1-1" }}
+  </p>
+
+  <p class="director" *ngIf="credits">
+    <strong>Regia:</strong> {{ credits | director }}
+  </p>
+
+  <p class="cast" *ngIf="credits?.cast?.length">
+    <strong>Cast:</strong> {{ credits | cast : 3 }}
+  </p>
+
+  <iframe
+    *ngIf="safeTrailerUrl"
+    [src]="safeTrailerUrl"
+    frameborder="0"
+    allowfullscreen
+    class="trailer"
+    title="Trailer video"
+  ></iframe>
+
+  <div class="similar" *ngIf="similar?.results?.length">
+    <strong>Film simili:</strong>
+    <ul>
+      <li *ngFor="let sim of similar.results.slice(0, 3)">
+        {{ sim.title }}
+      </li>
+    </ul>
+  </div>
+  <button class="close-button" (click)="close.emit()">✖</button>
+</div>

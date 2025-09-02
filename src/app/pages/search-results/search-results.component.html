@@ -1,0 +1,51 @@
+<div class="main-content">
+  <!-- titolo per la persona -->
+  <h2 *ngIf="tipo === 'persona' && people.length > 0">
+    Risultati per {{ people[0].name }}
+  </h2>
+
+  <!-- 👤 Immagine della persona -->
+  <div *ngIf="tipo === 'persona' && people.length > 0" class="grid">
+    <div class="card">
+      <img
+        [src]="imageBaseUrl + people[0].profile_path"
+        alt="{{ people[0].name }}"
+      />
+    </div>
+  </div>
+  <!-- 🎬 Titolo film solo se tipo === 'persona' -->
+  <h2 *ngIf="tipo === 'persona' && movies.length > 0">
+    Film in cui ha recitato:
+  </h2>
+  <!-- 🎬 Titolo film per titolo o genere -->
+  <h2 *ngIf="(tipo === 'titolo' || tipo === 'genere') && movies.length > 0">
+    Film trovati
+  </h2>
+  <!-- griglia delle copertine -->
+  <div *ngIf="movies.length > 0" class="grid">
+    <div
+      *ngFor="let movie of movies"
+      class="card"
+      (click)="onCardClick($event, movie)"
+    >
+      <img [src]="imageBaseUrl + movie.poster_path" alt="{{ movie.title }}" />
+      <!-- <h3>{{ movie.title }}</h3> -->
+    </div>
+  </div>
+  <!-- Loading -->
+  <div *ngIf="loading">Caricamento...</div>
+  <!--Nessun risultato -->
+  <div *ngIf="!loading && movies.length === 0 && people.length === 0">
+    Nessun risultato trovato.
+  </div>
+</div>
+<app-movie-datail-modal
+  *ngIf="selectedMovie"
+  [movie]="selectedMovie"
+  [ngStyle]="{
+    top: modalTop + 'px',
+    left: modalLeft + 'px',
+    position: 'absolute'
+  }"
+  (close)="selectedMovie = null"
+/>

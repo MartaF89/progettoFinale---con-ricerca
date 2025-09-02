@@ -1,0 +1,25 @@
+<div class="hero-slider">
+  <div class="hero-track" #slider>
+    @for (movie of recentMovies; let i = $index; track movie.id) {
+    <div
+      class="hero-slide"
+      [id]="'slide-' + i"
+      [style.backgroundImage]="
+        'url(' + imageBaseUrl + movie.backdrop_path + ')'
+      "
+    >
+      <div class="hero-overlay">
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.release_date }}</p>
+        <button (click)="goToDetails(movie.id)">Scopri di più</button>
+      </div>
+    </div>
+    }
+  </div>
+  <!-- Indicatori fuori dal ciclo -->
+  <div class="hero-indicators">
+    @for (movie of movies.slice(0, 10); let i = $index; track movie.id) {
+    <span [class.active]="i === activeIndex" (click)="scrollToSlide(i)"></span>
+    }
+  </div>
+</div>

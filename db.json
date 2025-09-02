@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "email": "utente@example.com",
+      "password": "123456",
+      "name": "Mario"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "titolo": "Il Signore degli Anelli",
+      "categoria": "Fantasy",
+      "poster": "link.jpg",
+      "trailer": "https://youtube.com/..."
+    }
+  ]
+}

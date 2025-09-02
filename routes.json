@@ -1,0 +1,20 @@
+// Esempio di contenuto di routes.json:
+
+
+// json
+// {
+//   "/users*": "/600/users$1",
+//   "/posts*": "/640/posts$1"
+// }
+
+
+// Questo file serve per proteggere le rotte del tuo server mock, usando i livelli di accesso forniti da json-server-auth. Ad esempio:
+
+// /600/users → accesso solo per utenti autenticati
+
+// /640/posts → accesso solo per utenti con permessi specifici
+
+{
+  "/users*": "/600/users$1",
+  "/posts*": "/640/posts$1"
+}

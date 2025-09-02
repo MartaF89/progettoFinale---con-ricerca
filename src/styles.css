@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap";
+@import "bootstrap-icons";
+/* Base */
+body {
+  background-color: #141414;
+  color: #ffffff;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Titoli sezioni */
+h2 {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: medium;
+  border-left: 4px solid #e50914;
+  padding-left: 10px;
+}
+
+/* Spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Alert */
+.alert-danger {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+}
+
+/* Card film */
+.card {
+  background-color: #1f1f1f;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+.card-img-top {
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+  height: 350px;
+}
+
+/* Card body */
+.card-body {
+  padding: 1rem;
+}
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+.card-text {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
