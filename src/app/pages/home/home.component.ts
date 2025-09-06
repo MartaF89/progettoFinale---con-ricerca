@@ -102,16 +102,6 @@ export class HomeComponent {
     this.selectedMovie = movie;
   }
 
-  // onCardClick(event: MouseEvent, movie: Movie) {
-  //   const target = event.currentTarget as HTMLElement;
-  //   const rect = target.getBoundingClientRect();
-
-  //   this.modalTop = rect.top + window.scrollY;
-  //   this.modalLeft = rect.left + window.scrollX;
-
-  //   this.selectedMovie = movie;
-  //   this.showModal = true;
-  // }
   onCardClick(event: MouseEvent, movie: Movie) {
     const target = event.currentTarget as HTMLElement;
     const rect = target.getBoundingClientRect();

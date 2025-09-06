@@ -2,6 +2,7 @@
 
 //e non appesantirlo con  dettagli tecnici
 export interface Movie {
+  trailerUrl: string | null;
   id: number;
   title: string;
   overview: string; //breve descrizione
@@ -22,7 +23,6 @@ export interface MovieDetail extends Movie {
   runtime: number; // durata in minuti
   tagline: string; // frase promozionale
   director?: string;
-  trailerUrl?: string;
   videos?: VideosResponse;
 }
 export interface SimilarMoviesResponse {

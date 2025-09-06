@@ -1,0 +1,111 @@
+<!-- <div class="fullscreen-wrapper">
+  <div class="login-container">
+    <h1 class="logo">LABTV</h1>
+    <form class="login-form" [formGroup]="frm_register" (ngSubmit)="register()">
+      <h2>Crea un account</h2>
+
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Nome"
+        formControlName="name"
+      />
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <input
+        type="password"
+        class="form-control"
+        id="confirmPassword"
+        placeholder="Conferma password"
+        formControlName="password_confirm"
+      />
+
+      <button type="submit" [disabled]="frm_register.invalid">
+        Registrati
+      </button>
+
+      <p class="signup">
+        Hai già un account? <a routerLink="/login">Accedi ora</a>
+      </p>
+    </form>
+  </div>
+</div> -->
+<div class="fullscreen-wrapper">
+  <nz-card nzTitle="Crea un account" style="max-width: 400px; margin: auto">
+    <form
+      [formGroup]="frm_register"
+      (ngSubmit)="register()"
+      nz-form
+      nzLayout="vertical"
+    >
+      <nz-form-item>
+        <nz-form-label [nzFor]="'name'" nzRequired>Nome</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="name" id="name" placeholder="Nome" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'email'" nzRequired>Email</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="email"
+            formControlName="email"
+            id="email"
+            placeholder="Email"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'password'" nzRequired>Password</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="password"
+            formControlName="password"
+            id="password"
+            placeholder="Password"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'confirmPassword'" nzRequired
+          >Conferma Password</nz-form-label
+        >
+        <nz-form-control>
+          <input
+            nz-input
+            type="password"
+            formControlName="password_confirm"
+            id="confirmPassword"
+            placeholder="Conferma password"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <div style="text-align: center; margin-top: 16px">
+        <button nz-button nzType="primary">Registrati</button>
+      </div>
+
+      <p class="signup" style="text-align: center; margin-top: 12px">
+        Hai già un account? <a routerLink="/login">Accedi ora</a>
+      </p>
+    </form>
+  </nz-card>
+</div>

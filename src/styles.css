@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "bootstrap-icons";
+
 /* Base */
 body {
   background-color: #141414;
@@ -57,4 +58,45 @@ h2 {
 .card-text {
   font-size: 0.9rem;
   color: #b3b3b3;
+} /* Toast container */
+.nz-message {
+  z-index: 1050;
+}
+
+/* Toast box */
+.nz-message-notice {
+  padding: 0;
+}
+
+.nz-message-notice-content {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  color: #fff !important;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 12px 16px;
+  font-weight: 500;
+}
+
+/* Success */
+.nz-message-success .nz-message-notice-content {
+  border-left: 4px solid #52c41a !important;
+}
+
+/* Error */
+.nz-message-error .nz-message-notice-content {
+  border-left: 4px solid #f5222d !important;
+}
+
+/* Warning */
+.nz-message-warning .nz-message-notice-content {
+  border-left: 4px solid #faad14 !important;
+}
+
+/* Icon override (opzionale) */
+.nz-message-notice .anticon {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #fff !important;
 }

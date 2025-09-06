@@ -1,4 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar *ngIf="showLayout"></app-navbar>
 
-<router-outlet />
-<app-footer></app-footer>
+<main style="min-height: 80vh">
+  <router-outlet></router-outlet>
+</main>
+
+<app-footer *ngIf="showLayout"></app-footer>

@@ -18,10 +18,6 @@ export class HeroSliderComponent {
 
   constructor(private router: Router) {}
   ngOnInit() {
-    // setInterval(() => {
-    //   this.activeIndex = (this.activeIndex + 1) % 10;
-    //   this.scrollToSlide(this.activeIndex);
-    // }, 5000);
     const autoplay = setInterval(() => {
       if (this.activeIndex < 9) {
         this.activeIndex++;

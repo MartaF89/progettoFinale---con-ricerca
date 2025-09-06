@@ -77,3 +77,54 @@
   color: black;
   opacity: 0.7;
 }
+/* Dropdown menu trasparente e visibile */
+
+.dropdown-menu {
+  margin-top: 4px;
+  min-width: 180px;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+/* Testo e link nel menu */
+.dropdown-item,
+.dropdown-item-text {
+  color: white;
+  font-weight: 500;
+}
+
+/* Hover su item */
+.dropdown-item:hover {
+  background-color: #e50914;
+  color: white;
+}
+
+.dropdown-toggle {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  height: 38px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-toggle:hover,
+.dropdown-toggle:focus {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+}
+
+/* Icona utente dentro il bottone */
+.dropdown-toggle .bi-person-circle {
+  font-size: 1.2rem;
+  margin-right: 4px;
+}

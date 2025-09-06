@@ -1,0 +1,85 @@
+<!-- <div class="fullscreen-wrapper">
+  <div class="login-container">
+    <h1 class="logo">LABTV</h1>
+    <form class="login-form" [formGroup]="frm" (ngSubmit)="login()">
+      <h2>Accedi</h2>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Nome"
+        formControlName="name"
+      />
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <button type="submit">Accedi</button>
+      <p class="signup">
+        Nuovo su Labtv? <a routerLink="/register">Registrati ora</a>
+      </p>
+    </form>
+  </div>
+</div> -->
+<div class="fullscreen-wrapper">
+  <nz-card nzTitle="Accedi" style="max-width: 400px; margin: auto">
+    <form
+      [formGroup]="frm"
+      (ngSubmit)="login()"
+      nz-form
+      nzLayout="vertical"
+      class="login-form"
+    >
+      <nz-form-item>
+        <nz-form-label [nzFor]="'name'" nzRequired>Nome</nz-form-label>
+        <nz-form-control>
+          <input nz-input formControlName="name" id="name" placeholder="Nome" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'email'" nzRequired>Email</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="email"
+            formControlName="email"
+            id="email"
+            placeholder="Email"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzFor]="'password'" nzRequired>Password</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="password"
+            formControlName="password"
+            id="password"
+            placeholder="Password"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <div style="text-align: center; margin-top: 16px">
+        <button nz-button nzType="primary">Accedi</button>
+      </div>
+
+      <p class="signup" style="text-align: center; margin-top: 12px">
+        Nuovo su Labtv? <a routerLink="/register">Registrati ora</a>
+      </p>
+    </form>
+  </nz-card>
+</div>

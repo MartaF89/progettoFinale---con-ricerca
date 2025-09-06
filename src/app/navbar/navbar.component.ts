@@ -1,11 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule],
+  imports: [RouterModule, ReactiveFormsModule, CommonModule, TitleCasePipe],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
@@ -15,7 +17,7 @@ export class NavbarComponent {
   searchControl = new FormControl('');
   selectedTipo = 'titolo';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public auth: AuthService) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -116,5 +118,11 @@ export class NavbarComponent {
     if (genreMap.includes(lowerValue)) return 'Cerca un genere...'; //se è un genere noto cerca
     if (value.split(' ').length >= 2) return 'Cerca una persona...'; // se contiene almeno 2 parole cerca in persona
     return 'Cerca un titolo...'; // altrimenti cerca un titolo
+  }
+  logOut() {
+    this.auth.storeToken(''); // cancella il token
+    sessionStorage.removeItem(this.auth['SS_KEY']); // rimuove manualmente
+    this.auth.loggedUser = undefined; // resetta lo stato utente
+    this.router.navigate(['/login']); // reindirizza
   }
 }

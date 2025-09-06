@@ -1,0 +1,42 @@
+<div class="details-hero-slider" *ngIf="details">
+  <!-- Sfondo dinamico -->
+  <div
+    class="backdrop"
+    [ngStyle]="{
+      'background-image': 'url(' + imageBaseUrl + details.backdrop_path + ')'
+    }"
+  >
+    <div class="overlay">
+      <!-- Titolo e tagline -->
+      <div class="info">
+        <h1>{{ details.title }}</h1>
+        <p class="tagline" *ngIf="details.tagline">"{{ details.tagline }}"</p>
+        <p class="overview">{{ details.overview }}</p>
+        <p class="release">📅 Uscita: {{ details.release_date }}</p>
+        <p class="rating">⭐ Valutazione: {{ details.vote_average }}/10</p>
+        <p class="duration">⏱️ Durata: {{ details.runtime }} min</p>
+
+        <!-- Pulsanti -->
+        <div class="actions">
+          <button *ngIf="safeTrailerUrl" (click)="showTrailer = true">
+            ▶️ Guarda il trailer
+          </button>
+          <button>❤️ Aggiungi ai preferiti</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trailer in overlay -->
+  <div class="trailer-modal" *ngIf="showTrailer">
+    <div class="trailer-content">
+      <button class="close-btn" (click)="showTrailer = false">✖</button>
+      <iframe
+        [src]="safeTrailerUrl"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>

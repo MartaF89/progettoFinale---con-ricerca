@@ -1,0 +1,284 @@
+/* .login-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  border-radius: 8px;
+  width: 800px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 32px;
+  color: #e50914;
+  margin-bottom: 20px;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.login-form input::placeholder {
+  color: #888;
+}
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  color: white;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e50914;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-form button:hover {
+  background-color: #f40612;
+}
+
+.signup {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup a {
+  color: #e50914;
+  text-decoration: none;
+}
+.fullscreen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+button:disabled {
+  background-color: #ccc; 
+  color: #666; 
+  cursor: not-allowed;
+  opacity: 0.7;
+} */
+
+/* .fullscreen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+}
+
+nz-card {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  color: white !important;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+nz-card .ant-card-head-title {
+  color: #e50914 !important;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+nz-form-label {
+  color: #ccc !important;
+}
+
+input[nz-input] {
+  background-color: #333 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 4px;
+}
+
+input[nz-input]::placeholder {
+  color: #888 !important;
+}
+
+button[nz-button] {
+  background-color: #e50914 !important;
+  border: none !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+button[nz-button]:hover {
+  background-color: #f40612 !important;
+}
+
+button[nz-button]:disabled {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+.signup {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.signup a {
+  color: #e50914;
+  text-decoration: none;
+} */
+
+/* serve solo per stilizzare componenti esterni (come quelli di ng-zorro) che non rispettano l’incapsulamento,cioè il modo in cui Angular protegge gli stili CSS di un componente, evitando che si “spargano” nel resto dell’applicazione */
+.fullscreen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+::ng-deep .ant-message-success {
+  background-color: #f6ffed !important; /* verde pastello */
+  border: 1px solid #b7eb8f !important;
+  color: #389e0d !important; /* verde scuro per leggibilità */
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: normal; /* permette al testo di andare a capo */
+  word-break: break-word; /* evita overflow */
+}
+
+/* Migliora la visibilità del contenuto */
+::ng-deep .ant-message-success .ant-message-custom-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Icona più discreta */
+::ng-deep .ant-message-success .anticon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #52c41a;
+}
+
+::ng-deep .ant-message-error {
+  background-color: #fff1f0 !important; /* rosso pastello */
+  border: 1px solid #ffa39e !important;
+  color: #cf1322 !important; /* rosso scuro per leggibilità */
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: normal; /* permette al testo di andare a capo */
+  word-break: break-word; /* evita overflow */
+}
+/* Migliora la visibilità del contenuto */
+::ng-deep .ant-message-error .ant-message-custom-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Icona più discreta */
+::ng-deep .ant-message-error .anticon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #ff4d4f;
+}
+
+/* Card */
+::ng-deep .ant-card {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+::ng-deep .ant-card-head-title {
+  color: #e50914;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Label */
+::ng-deep .ant-form-item-label label {
+  color: #ccc;
+}
+
+/* Input */
+::ng-deep input.ant-input {
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+}
+
+::ng-deep input.ant-input::placeholder {
+  color: #888;
+}
+
+/* Button */
+::ng-deep button.ant-btn-primary {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+::ng-deep button.ant-btn-primary:hover {
+  background-color: #f40612;
+}
+
+::ng-deep button.ant-btn-primary[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Signup link */
+.signup {
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.signup a {
+  color: #e50914;
+  text-decoration: none;
+}
+:host {
+  display: block;
+  position: relative;
+  min-height: 100vh;
+  background-image: url("/public/collagecopertineCompressaTinypng.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:host::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}

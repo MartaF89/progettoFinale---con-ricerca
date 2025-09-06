@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { CreditsResponse, Genre, Video } from '../../../models/Movie';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Pipe({
   name: 'genreList',
@@ -46,5 +47,12 @@ export class CastPipe implements PipeTransform {
         .map((actor) => actor.name) //estrae solo i nomi.
         .join(', ') || '' //li unisce in una stringa separata da virgole. ||''fallback in caso di dati mancanti.
     );
+  }
+}
+@Pipe({ name: 'safeUrl', standalone: true })
+export class SafeUrlPipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

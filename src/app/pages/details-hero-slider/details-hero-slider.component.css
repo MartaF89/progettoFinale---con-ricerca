@@ -1,0 +1,83 @@
+.details-hero-slider {
+  position: relative;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.backdrop {
+  height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem;
+}
+
+.info h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.overview {
+  margin: 1rem 0;
+  max-width: 800px;
+}
+
+.actions button {
+  margin-right: 1rem;
+  background: #e50914;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.trailer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.trailer-content {
+  position: relative;
+  width: 80%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+}
+
+.trailer-content iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
