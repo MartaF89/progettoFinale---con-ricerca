@@ -16,31 +16,22 @@ export class NavbarComponent {
   searchActive = false;
   searchControl = new FormControl('');
   selectedTipo = 'titolo';
-
+  isMobile = false;
+  userMenuOpen = false;
   constructor(private router: Router, public auth: AuthService) {}
+  ngOnInit() {
+    this.checkViewport();
+    window.addEventListener('resize', () => this.checkViewport());
+  }
+
+  checkViewport() {
+    this.isMobile = window.innerWidth < 992; // Bootstrap breakpoint for lg
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;
   }
-  // //RICERCA, legge il testo, estrae tipo e valore, naviga con queryParams, resetta il campo e chiude la barra.
-  // submitSearch() {
-  //   const query = this.searchControl.value?.trim(); //legge il valore della barra di ricerca
-  //   if (!query) return; //se è vuoto return
-  //   let tipo = 'titolo';
-  //   let valore = query;
-  //   if (query.includes(':')) {
-  //     const [prefix, rest] = query.split(':');
-  //     tipo = prefix.toLowerCase();
-  //     valore = rest.trim();
-  //   }
-  //   this.router.navigate(['/risultati'], {
-  //     queryParams: { tipo, q: valore },
-  //   });
-
-  //   this.searchControl.reset();
-  //   this.searchActive = false;
-  // }
 
   //NUOVO SUBMIT PER RICERCA ESTESA
   submitSearch() {
@@ -98,16 +89,21 @@ export class NavbarComponent {
 
     this.searchControl.reset();
     this.searchActive = false;
+    this.closeMobileMenu();
   }
 
-  // apre la barra di ricerca al primo click, invia la ricerca al secondo.
   toggleSearch() {
-    if (!this.searchActive) {
-      this.searchActive = true;
-      return;
+    if (this.isMobile) {
+      this.searchActive = !this.searchActive;
+    } else {
+      if (!this.searchActive) {
+        this.searchActive = true;
+        return;
+      }
+      this.submitSearch();
     }
-    this.submitSearch();
   }
+
   getPlaceholder(): string {
     const value = this.searchControl.value?.trim() || '';
     if (!value) return 'Film,Genere,Persona';
@@ -124,5 +120,12 @@ export class NavbarComponent {
     sessionStorage.removeItem(this.auth['SS_KEY']); // rimuove manualmente
     this.auth.loggedUser = undefined; // resetta lo stato utente
     this.router.navigate(['/login']); // reindirizza
+  }
+  closeMobileMenu() {
+    const navbarCollapse = document.getElementById('navbarNav');
+    if (navbarCollapse?.classList.contains('show')) {
+      navbarCollapse.classList.remove('show');
+    }
+    this.userMenuOpen = false;
   }
 }

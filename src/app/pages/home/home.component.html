@@ -1,63 +1,10 @@
-<!-- SCROLL INFINITO APPLICATO ALL HERO, A 2 COPERTINE DALLA FINE PARTE LA CHIAMATA CON UN RITARDO DI 300MS PER EVITARE CHIAMATE TROPPO
-FREQUENTI -->
 <div class="home-wrapper">
-  <div
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="300"
-    (scrolled)="loadHeroMovies()"
-  >
-    <app-hero-slider [movies]="heroMovies"></app-hero-slider>
-  </div>
-  <!-- 
-CHIAMATE SECONDO CATEGORIA GESTITE CON IL CAROSELLO -->
-  <div class="container py-4">
-    @if (loading) {
-    <div class="text-center my-5">
-      <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Caricamento...</span>
-      </div>
-    </div>
-    } @else { @if (error) {
-    <div class="alert alert-danger" role="alert">
-      Errore nel caricamento dei film. Riprova più tardi.
-    </div>
-    } @else { @if (trending.length > 0) {
-    <app-movie-carousel
-      [title]="'🎬 Film Di Tendenza'"
-      [movies]="trending"
-      (openModal)="onCardClick($event.event, $event.movie)"
-    ></app-movie-carousel>
-    } @if (topRated.length > 0) {
-    <app-movie-carousel
-      [title]="'⭐ I Più Votati'"
-      [movies]="topRated"
-      (openModal)="onCardClick($event.event, $event.movie)"
-    ></app-movie-carousel>
-    } @if (upComing.length > 0) {
-    <app-movie-carousel
-      [title]="'📅 In Arrivo'"
-      [movies]="upComing"
-      (openModal)="onCardClick($event.event, $event.movie)"
-    ></app-movie-carousel>
-    } @if (nowPlaying.length > 0) {
-    <app-movie-carousel
-      [title]="'🎬 Novità'"
-      [movies]="nowPlaying"
-      (openModal)="onCardClick($event.event, $event.movie)"
-    ></app-movie-carousel>
-    }}}
-  </div>
-</div>
-<app-movie-datail-modal
-  *ngIf="selectedMovie"
-  [movie]="selectedMovie"
-  [ngStyle]="{
-    top: modalTop + 'px',
-    left: modalLeft + 'px',
-    position: 'absolute'
-  }"
-  (close)="selectedMovie = null"
-/>
+  <h1 class="welcome-title">
+    Felice di rivederti, {{ auth.loggedUser?.name | titlecase }}!
+  </h1>
+  <!-- <p class="lead">Esploriamo il catalogo?</p> -->
 
-<!-- style="min-height: 100vh; overflow: auto" -->
+  <a routerLink="/catalogo" class="btn btn-outline-light mt-3">
+    🎬 Vai al catalogo
+  </a>
+</div>

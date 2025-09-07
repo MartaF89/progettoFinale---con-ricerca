@@ -1,54 +1,29 @@
-/* Navbar trasparente che diventa scura quando scrollata */
+/* === Navbar base === */
 .custom-navbar {
   background-color: transparent;
   transition: background-color 0.3s ease;
-  z-index: 1000; /* puoi rimuoverlo se non serve sovrapposizione */
+  z-index: 1000;
 }
 
 .custom-navbar.scrolled {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-/* Colore bianco per testi principali */
+/* === Tipografia e colori === */
 .navbar-nav .nav-link,
-.navbar-brand {
-  color: white;
-}
-/* icona menu bianca */
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Colore bianco per bottoni e input */
+.navbar-brand,
 .btn,
-.form-control {
-  color: white;
-}
-
-/* Le icone ereditano il colore dal contenitore */
+.form-control,
 .bi {
-  color: inherit;
-}
-
-/* Bordo bianco per bottoni */
-.btn-outline-light {
-  border-color: white;
-}
-
-/* Hover personalizzato per bottoni */
-.btn-outline-light:hover {
-  background-color: transparent;
   color: white;
-  border-color: white;
 }
 
-/* Placeholder bianco nel campo di ricerca */
-.form-control::placeholder {
-  color: white;
-  opacity: 0.7;
+.navbar-nav .nav-link:hover {
+  color: #e50914;
+  transition: color 0.2s ease;
 }
 
-/* Logo stile Netflix */
+/* === Logo stile Netflix === */
 .labforweb {
   font-size: 30px;
   color: #e50914;
@@ -56,6 +31,37 @@
   text-transform: uppercase;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* === Icona menu bianca === */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* === Bottoni === */
+.btn-outline-light {
+  border-color: white;
+}
+
+.btn-outline-light:hover {
+  background-color: transparent;
+  color: white;
+  border-color: white;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* === Placeholder === */
+.form-control::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.search-input::placeholder {
+  color: black;
+  opacity: 0.7;
+}
+
+/* === Campo ricerca desktop (non modificato) === */
 .search-input {
   width: 0;
   opacity: 0;
@@ -73,12 +79,8 @@
   pointer-events: auto;
   color: black;
 }
-.search-input::placeholder {
-  color: black;
-  opacity: 0.7;
-}
-/* Dropdown menu trasparente e visibile */
 
+/* === Dropdown menu desktop === */
 .dropdown-menu {
   margin-top: 4px;
   min-width: 180px;
@@ -87,21 +89,23 @@
   -webkit-backdrop-filter: blur(6px);
   border-radius: 6px;
   padding: 0.5rem;
+  left: auto !important;
+  right: 0;
+  top: 100% !important;
 }
 
-/* Testo e link nel menu */
 .dropdown-item,
 .dropdown-item-text {
   color: white;
   font-weight: 500;
 }
 
-/* Hover su item */
 .dropdown-item:hover {
   background-color: #e50914;
   color: white;
 }
 
+/* === Bottone utente desktop === */
 .dropdown-toggle {
   padding: 0.375rem 0.75rem;
   font-size: 0.9rem;
@@ -114,6 +118,8 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  justify-content: center;
+  text-align: center;
 }
 
 .dropdown-toggle:hover,
@@ -123,8 +129,160 @@
   border-color: white;
 }
 
-/* Icona utente dentro il bottone */
 .dropdown-toggle .bi-person-circle {
   font-size: 1.2rem;
   margin-right: 4px;
+}
+
+/* === Freccette rotanti === */
+.rotate {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* === MOBILE STYLES === */
+@media (max-width: 991px) {
+  /* Navbar mobile */
+  .navbar-collapse {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .navbar-collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    padding-bottom: 1rem;
+  }
+
+  /* Link mobile */
+  .navbar-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100%;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.12s ease-out, transform 0.12s ease-out;
+  }
+
+  .navbar-collapse.show .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navbar-nav .nav-link {
+    display: inline-block;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* Bottone Ricerca mobile */
+  .search-toggle {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-toggle i.bi-chevron-right {
+    transition: transform 0.3s ease;
+  }
+
+  .search-toggle i.rotate {
+    transform: rotate(90deg);
+  }
+
+  /* Campo ricerca mobile */
+  .search-form-mobile {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input-mobile {
+    width: 80%;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-input-mobile::placeholder {
+    color: black;
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  .search-form-mobile button {
+    align-self: center;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .search-form-mobile button.btn-outline-light.btn-sm:hover {
+    background-color: #e50914;
+    color: white;
+    border-color: #e50914;
+  }
+
+  /* Pannello utente mobile */
+  .user-panel-mobile {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .user-panel-mobile .dropdown-item {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    max-width: 160px;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .user-panel-mobile .dropdown-item:hover {
+    background-color: #e50914;
+    color: white;
+  }
+
+  .user-panel-mobile .dropdown-item-text {
+    color: white;
+    font-weight: 500;
+  }
 }

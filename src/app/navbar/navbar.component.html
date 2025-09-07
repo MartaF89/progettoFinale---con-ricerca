@@ -1,4 +1,4 @@
-<nav
+<!-- <nav
   class="navbar fixed-top navbar-expand-lg custom-navbar"
   [class.scrolled]="isScrolled"
 >
@@ -18,16 +18,13 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/catalogo">Catalogo</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/registrazione">Registrazione</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/contatti">Contatti</a>
         </li>
@@ -42,22 +39,180 @@
         />
 
         <button
-          class="btn btn-outline-light"
+          class="btn btn-outline-light search-toggle"
+          type="button"
+          (click)="toggleSearch()"
+        >
+          <span class="d-none d-lg-inline"><i class="bi bi-search"></i></span>
+          <span class="d-inline d-lg-none">Ricerca ⯈</span>
+        </button>
+      </form>
+
+      @if(auth.isLoggedIn()){
+
+      <div class="dropdown">
+        <button
+          class="btn btn-outline-light dropdown-toggle profile-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+        >
+          <span class="d-none d-lg-inline">
+            <i class="bi bi-person-circle"></i>
+            {{ auth.loggedUser?.name | titlecase }}
+          </span>
+          <span class="d-inline d-lg-none">
+            {{ auth.loggedUser?.name | titlecase }} ⯈
+          </span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <span class="dropdown-item-text" style="color: #e50914">
+              Ciao {{ auth.loggedUser?.name | titlecase }}!
+            </span>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/profilo">Il mio profilo</a>
+          </li>
+          <li><a class="dropdown-item" (click)="logOut()">Esci</a></li>
+        </ul>
+      </div>
+
+      }
+    </div>
+  </div>
+</nav> -->
+<nav
+  class="navbar fixed-top navbar-expand-lg custom-navbar"
+  [class.scrolled]="isScrolled"
+>
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/" (click)="closeMobileMenu()">
+      <div class="labforweb">LABFORWEB</div>
+    </a>
+
+    <!-- Toggle per mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenuto navbar -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <!-- Link principali -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" (click)="closeMobileMenu()"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalogo" (click)="closeMobileMenu()"
+            >Catalogo</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contatti" (click)="closeMobileMenu()"
+            >Contatti</a
+          >
+        </li>
+
+        <!-- Bottone Ricerca (solo mobile) -->
+        <li class="nav-item d-lg-none">
+          <button
+            class="search-toggle nav-link"
+            type="button"
+            (click)="toggleSearch()"
+          >
+            Ricerca
+            <i class="bi bi-chevron-right" [class.rotate]="searchActive"></i>
+          </button>
+        </li>
+
+        <!-- Campo Ricerca + bottone (solo mobile) -->
+        <li class="nav-item d-lg-none" *ngIf="searchActive">
+          <form
+            class="search-form-mobile d-flex flex-column align-items-center px-3 py-2"
+          >
+            <input
+              class="form-control search-input-mobile mb-2"
+              [formControl]="searchControl"
+              type="search"
+              [placeholder]="getPlaceholder()"
+            />
+            <button
+              class="btn btn-outline-light btn-sm"
+              type="button"
+              (click)="submitSearch()"
+            >
+              Cerca
+            </button>
+          </form>
+        </li>
+
+        <!-- Link utente (solo mobile) -->
+        <li class="nav-item d-lg-none" *ngIf="auth.isLoggedIn()">
+          <button
+            class="user-toggle nav-link"
+            type="button"
+            (click)="userMenuOpen = !userMenuOpen"
+          >
+            <span
+              class="d-flex justify-content-between align-items-center w-100"
+            >
+              {{ auth.loggedUser?.name | titlecase }}
+              <i class="bi bi-chevron-right" [class.rotate]="userMenuOpen"></i>
+            </span>
+          </button>
+        </li>
+
+        <!-- Pannello utente mobile -->
+        <li class="nav-item d-lg-none" *ngIf="userMenuOpen">
+          <div class="user-panel-mobile">
+            <a
+              class="dropdown-item"
+              routerLink="/profilo"
+              (click)="closeMobileMenu(); userMenuOpen = false"
+              >Il mio profilo</a
+            >
+            <a
+              class="dropdown-item"
+              (click)="logOut(); closeMobileMenu(); userMenuOpen = false"
+              >Esci</a
+            >
+          </div>
+        </li>
+      </ul>
+
+      <!-- Ricerca desktop -->
+      <form
+        class="search-form d-none d-lg-flex me-3"
+        [class.active]="searchActive"
+      >
+        <input
+          class="form-control me-2 search-input"
+          [formControl]="searchControl"
+          type="search"
+          [placeholder]="getPlaceholder()"
+        />
+        <button
+          class="btn btn-outline-light search-toggle"
           type="button"
           (click)="toggleSearch()"
         >
           <i class="bi bi-search"></i>
         </button>
       </form>
-      <!-- @if(auth.isLoggedIn()){
-      <a routerLink="/profilo" class="btn btn-outline-light">
-        <i class="bi bi-person-circle"></i>
-      </a>
-      } -->
+
+      <!-- Dropdown utente desktop -->
       @if(auth.isLoggedIn()){
-      <div class="dropdown">
+      <div class="dropdown d-none d-lg-block">
         <button
-          class="btn btn-outline-light dropdown-toggle"
+          class="btn btn-outline-light dropdown-toggle profile-toggle"
           type="button"
           data-bs-toggle="dropdown"
         >
@@ -66,14 +221,23 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
-            <span class="dropdown-item-text" style="color: #e50914"
-              >Ciao {{ auth.loggedUser?.name | titlecase }}!</span
+            <span class="dropdown-item-text" style="color: #e50914">
+              Ciao {{ auth.loggedUser?.name | titlecase }}!
+            </span>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="/profilo"
+              (click)="closeMobileMenu()"
+              >Il mio profilo</a
             >
           </li>
           <li>
-            <a class="dropdown-item" routerLink="/profilo">Il mio profilo</a>
+            <a class="dropdown-item" (click)="logOut(); closeMobileMenu()"
+              >Esci</a
+            >
           </li>
-          <li><a class="dropdown-item" (click)="logOut()">Esci</a></li>
         </ul>
       </div>
       }

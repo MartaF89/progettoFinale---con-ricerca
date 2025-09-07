@@ -1,0 +1,21 @@
+.home-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .home-wrapper {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .hero-slide {
+    height: 220px;
+  }
+
+  .carousel-card img.film-image {
+    height: 180px;
+  }
+}

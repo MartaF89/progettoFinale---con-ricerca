@@ -12,6 +12,7 @@ import { HeroSliderComponent } from './components/hero-slider/hero-slider.compon
 import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContattiComponent } from './pages/contatti/contatti.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @Component({
   selector: 'app-root',

@@ -42,7 +42,7 @@ export class LoginComponent {
   });
   ngOnInit() {
     if (this.auth.isLoggedIn()) {
-      this.router.navigateByUrl('/catalogo');
+      this.router.navigateByUrl('/home');
     }
   }
   login() {
@@ -58,7 +58,7 @@ export class LoginComponent {
           this.auth.storeToken(r.access_token);
 
           this.message.success('Accesso effettuato con successo');
-          this.router.navigate(['/catalogo']);
+          this.router.navigate(['/home']);
         },
         error: (err) => {
           const msg = err.error?.errore;
@@ -76,4 +76,3 @@ export class LoginComponent {
       });
   }
 }
-// 9 lezione prima parte min36
