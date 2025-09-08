@@ -6,13 +6,18 @@ export interface LoggedUser {
   _id?: string;
   name: string;
   email: string;
-  password: string; // hashata
-  role: 'admin' | 'user'; // puoi estendere con altri ruoli se servono
-  favorites: string[]; // array di riferimenti a Movie
-  cart: {
-    movieId: string;
+  password?: string; // opzionale nel frontend
+  role: 'admin' | 'user';
+
+  favorites?: string[]; // array di ID film
+  cart?: {
+    movieId: number;
     quantity: number;
   }[];
+
+  createdAt?: string; // data di registrazione (ISO string)
+
+  avatarUrl?: string; // immagine profilo
 }
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 export const environment = {
   backendProgFin: 'http://localhost:3000',
   production: false,
-  jsonServerUrl: 'http://localhost:3000',
+
   tmdbUrl: 'https://api.themoviedb.org',
   tmdbApiKey: '452e9c3bdf83daa533c8503d7a5aa6bb',
   tmdbImageBaseUrl: 'https://image.tmdb.org/t/p/w500',

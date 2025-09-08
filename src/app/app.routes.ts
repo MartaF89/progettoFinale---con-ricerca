@@ -6,6 +6,7 @@ import { DetailsHeroSliderComponent } from './pages/details-hero-slider/details-
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
 
 export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'contatti', component: ContattiComponent },
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'risultati', component: SearchResultsComponent },
+  { path: 'profilo', component: ProfiloComponent },
   { path: 'movie/:id', component: DetailsHeroSliderComponent },
   { path: '', redirectTo: 'register', pathMatch: 'full' }, // solo questa per path vuoto
 ];

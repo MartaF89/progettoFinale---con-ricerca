@@ -152,7 +152,7 @@ export class RegisterComponent {
           next: (res) => {
             this.auth.storeToken(res.access_token);
             this.message.success('Registrazione completata. Benvenuta!');
-            this.router.navigate(['/catalogo']);
+            this.router.navigate(['/home']);
           },
           error: () => {
             this.message.warning('Registrazione ok, ma login fallito');

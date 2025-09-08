@@ -58,4 +58,88 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-vedi 8 lezione minuto52 circa
+PER I DATI DELL USER
+Hai fatto un ottimo lavoro, Marta! E sì, ora che vedo il tuo AuthService, posso confermarti che hai già tutto il necessario per recuperare l’utente loggato nel frontend — ti basta usare this.authService.loggedUser.
+
+✅ Come usare loggedUser nel componente profilo
+Nel tuo ProfileComponent, puoi semplicemente accedere all’utente così:
+
+ts
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { LoggedUser } from '../services/auth.service';
+
+@Component({
+selector: 'app-profile',
+templateUrl: './profile.component.html'
+})
+export class ProfileComponent implements OnInit {
+user?: LoggedUser;
+
+constructor(private authService: AuthService) {}
+
+ngOnInit(): void {
+this.user = this.authService.loggedUser;
+}
+}
+🖼️ E nel template (profile.component.html)
+html
+
+<div *ngIf="user">
+  <h2>Ciao {{ user.name }} 👋</h2>
+  <p>Email: {{ user.email }}</p>
+  <p>Ruolo: {{ user.role }}</p>
+  <p *ngIf="user.favorites?.length">Hai {{ user.favorites.length }} film preferiti</p>
+  <p *ngIf="user.cart?.length">Hai {{ user.cart.length }} film nel carrello</p>
+</div>
+
+PER I PREFERITI E CARRELLLO
+
+🎯 Obiettivo
+Hai nel profilo utente:
+
+ts
+favorites: string[]; // array di ID film
+cart: { movieId: string; quantity: number }[];
+Per mostrare poster, titolo, descrizione, ecc., ti servono gli oggetti MovieDetail. E tu hai già il metodo perfetto:
+
+ts
+getMovieDetails(id: number): Observable<MovieDetail>
+🛠️ Strategia nel componente profilo
+
+1. Recupera i film preferiti
+   ts
+   loadFavoriteMovies(): void {
+   const ids = this.user?.favorites || [];
+   const requests = ids.map(id => this.tmdbService.getMovieDetails(+id));
+   forkJoin(requests).subscribe((movies: MovieDetail[]) => {
+   this.favoriteMovies = movies;
+   });
+   }
+2. Recupera i film nel carrello
+ts
+loadCartMovies(): void {
+const items = this.user?.cart || [];
+const requests = items.map(item => this.tmdbService.getMovieDetails(+item.movieId));
+forkJoin(requests).subscribe((movies: MovieDetail[]) => {
+this.cartMovies = movies.map((movie, index) => ({
+movie,
+quantity: items[index].quantity
+}));
+});
+}
+🖼️ Visualizzazione nel template
+html
+<h3>I tuoi preferiti</h3>
+<div *ngFor="let movie of favoriteMovies">
+  <img [src]="movie.poster_path" alt="{{ movie.title }}" />
+  <p>{{ movie.title }}</p>
+</div>
+
+<h3>Carrello</h3>
+<div *ngFor="let item of cartMovies">
+  <img [src]="item.movie.poster_path" alt="{{ item.movie.title }}" />
+  <p>{{ item.movie.title }} – Quantità: {{ item.quantity }}</p>
+</div>
+✅ Conclusione
+Hai già tutto pronto nel tuo TmdbService, ti basta usare getMovieDetails() con forkJoin() per ottenere i dati in parallelo. Domani possiamo rifinire insieme il layout, aggiungere animazioni o persino una modale con getFullMovieData() per ogni film.

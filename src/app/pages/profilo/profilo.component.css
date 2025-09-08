@@ -1,0 +1,93 @@
+/* Container principale */
+:host {
+  display: block;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 6rem auto 2rem auto;
+  font-family: "Segoe UI", sans-serif;
+  color: white;
+  background-color: linear-gradient(135deg, #fdfdfd, #eaeaea);
+}
+
+/* Avatar utente */
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Informazioni utente */
+p {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+/* Titoli sezioni */
+h3 {
+  margin-top: 3rem;
+  font-size: 2rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.3rem;
+  text-align: center;
+  color: #444;
+}
+
+/* Lista film */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+/* Card film */
+.movie-card {
+  width: 150px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Poster film */
+.movie-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+/* Link dettagli */
+a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #007acc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Messaggi vuoti */
+.empty-message p {
+  font-style: italic;
+  color: #777;
+  margin-top: 1rem;
+  text-align: center;
+}

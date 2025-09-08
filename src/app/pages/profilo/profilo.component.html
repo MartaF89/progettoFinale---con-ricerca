@@ -1,0 +1,82 @@
+<!-- <div *ngIf="user">
+
+  <img *ngIf="user.avatarUrl" [src]="user.avatarUrl" alt="Avatar" width="100" />
+  <p>Email: {{ user.email }}</p>
+  <p>Ruolo: {{ user.role }}</p>
+  <p>Registrato il: {{ user.createdAt | date : "longDate" : "" : "it-IT" }}</p>
+</div>
+
+<h3>I tuoi preferiti ❤️</h3>
+<div *ngIf="favoriteMovies.length; else noFav">
+  <div class="movie-list">
+    <div *ngFor="let movie of favoriteMovies">
+      <img [src]="movie.poster_path" alt="{{ movie.title }}" width="100" />
+      <p>{{ movie.title }}</p>
+      <a [routerLink]="['/movie', movie.id]">Dettagli</a>
+    </div>
+  </div>
+</div>
+<ng-template #noFav>
+  <p>Non hai ancora aggiunto film tra i preferiti.</p>
+</ng-template>
+
+<h3>Carrello 🛒</h3>
+<div *ngIf="cartMovies.length; else noCart">
+  <div *ngFor="let item of cartMovies">
+    <img
+      [src]="item.movie.poster_path"
+      alt="{{ item.movie.title }}"
+      width="100"
+    />
+    <p>{{ item.movie.title }} – Quantità: {{ item.quantity }}</p>
+    <a [routerLink]="['/movie', item.movie.id]">Dettagli</a>
+  </div>
+</div>
+<ng-template #noCart>
+  <p>Il tuo carrello è vuoto.</p>
+</ng-template> -->
+<div *ngIf="user">
+  <img
+    *ngIf="user.avatarUrl"
+    [src]="user.avatarUrl"
+    alt="Avatar"
+    class="avatar"
+  />
+  <p>Email: {{ user.email }}</p>
+  <p>Ruolo: {{ user.role }}</p>
+  <p>Registrato il: {{ user.createdAt | date : "longDate" }}</p>
+</div>
+
+<h3>I tuoi preferiti ❤️</h3>
+<div *ngIf="favoriteMovies.length > 0; else noFavorites" class="movie-list">
+  <div *ngFor="let movie of favoriteMovies" class="movie-card">
+    <img [src]="movie.poster_path" alt="{{ movie.title }}" width="100" />
+    <p>{{ movie.title }}</p>
+    <a [routerLink]="['/movie', movie.id]">Dettagli</a>
+  </div>
+</div>
+<!-- else -->
+<ng-template #noFavorites>
+  <div class="empty-message">
+    <p>Non hai ancora aggiunto film tra i preferiti.</p>
+  </div>
+</ng-template>
+
+<h3>Carrello 🛒</h3>
+<div *ngIf="cartMovies.length > 0; else noCart" class="movie-list">
+  <div *ngFor="let item of cartMovies" class="movie-card">
+    <img
+      [src]="item.movie.poster_path"
+      alt="{{ item.movie.title }}"
+      width="100"
+    />
+    <p>{{ item.movie.title }} – Quantità: {{ item.quantity }}</p>
+    <a [routerLink]="['/movie', item.movie.id]">Dettagli</a>
+  </div>
+</div>
+<!-- else -->
+<ng-template #noCart>
+  <div class="empty-message">
+    <p>Il tuo carrello è vuoto.</p>
+  </div>
+</ng-template>

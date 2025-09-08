@@ -1,6 +1,7 @@
 //PROPRIETà DEL FIM CHE MI INTERESSANO.non ho usato tutte le proprietà, ma solo quelle essenziali per mostrare il film in modo intuitivo
 
 //e non appesantirlo con  dettagli tecnici
+
 export interface Movie {
   trailerUrl: string | null;
   id: number;
