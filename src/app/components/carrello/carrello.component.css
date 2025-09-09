@@ -1,0 +1,22 @@
+.movie-actions {
+  display: flex;
+  justify-content: flex-start; /* 👈 Allinea a sinistra */
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  padding-left: 0.5rem; /* opzionale: spaziatura dal bordo */
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.icon-button:hover {
+  transform: scale(1.2);
+  color: #007acc;
+}

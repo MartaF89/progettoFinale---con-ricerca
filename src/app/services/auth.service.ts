@@ -13,6 +13,9 @@ export interface LoggedUser {
   cart?: {
     movieId: number;
     quantity: number;
+    price?: number;
+    poster_path?: string;
+    title?: string;
   }[];
 
   createdAt?: string; // data di registrazione (ISO string)
@@ -80,5 +83,9 @@ export class AuthService {
         password,
       }
     );
+  }
+  //rende accessibile le info dell utente attualmente loggato(per carrello)
+  getLoggedUser(): LoggedUser | undefined {
+    return this.loggedUser;
   }
 }

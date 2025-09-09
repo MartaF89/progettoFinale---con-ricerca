@@ -48,29 +48,6 @@ h3 {
   justify-content: center;
 }
 
-/* Card film */
-.movie-card {
-  width: 150px;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.movie-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Poster film */
-.movie-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
 /* Link dettagli */
 a {
   display: inline-block;
@@ -90,4 +67,15 @@ a:hover {
   color: #777;
   margin-top: 1rem;
   text-align: center;
+}
+.movie-card img.movie-poster {
+  width: 120px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.movie-card img.movie-poster:hover {
+  transform: scale(1.05);
 }

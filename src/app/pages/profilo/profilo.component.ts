@@ -19,6 +19,7 @@ export class ProfiloComponent implements OnInit {
   user?: LoggedUser;
   favoriteMovies: MovieDetail[] = [];
   cartMovies: { movie: MovieDetail; quantity: number }[] = [];
+  imageBaseUrl = environment.tmdbImageBaseUrl;
 
   constructor(
     private authService: AuthService,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TmdbService } from '../../services/tmdb.service';
 import { Movie } from '../../../../models/Movie';
 import { environment } from '../../../environments/environment.develop';
@@ -7,6 +7,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { HeroSliderComponent } from '../../components/hero-slider/hero-slider.component';
 import { CommonModule } from '@angular/common';
 import { MovieDatailModalComponent } from '../../movie-datail-modal/movie-datail-modal.component';
+import { AuthService, LoggedUser } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -35,9 +36,11 @@ export class CatalogoComponent {
   currentPage = 1;
   totalPages = 1000;
   imageBaseUrl = environment.tmdbImageBaseUrl;
+  loggedUser?: LoggedUser;
 
-  constructor(private tmdbService: TmdbService) {}
+  constructor(private tmdbService: TmdbService, private auth: AuthService) {}
   ngOnInit() {
+    this.loggedUser = this.auth.getLoggedUser();
     this.loadHeroMovies();
     this.tmdbService.getTrendingMovies().subscribe({
       next: (data) => {

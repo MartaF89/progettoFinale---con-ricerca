@@ -13,19 +13,19 @@
 </div>
 
 <div class="modal-content">
-  <h2>{{ details.title }}</h2>
-  <p class="tagline" *ngIf="details.tagline">{{ details.tagline }}</p>
-  <p class="overview">{{ details.overview }}</p>
+  <h2 *ngIf="details">{{ details.title }}</h2>
+  <p class="tagline" *ngIf="details?.tagline">{{ details.tagline }}</p>
+  <p class="overview" *ngIf="details">{{ details.overview }}</p>
 
-  <p class="genres" *ngIf="details.genres?.length">
+  <p class="genres" *ngIf="details?.genres?.length">
     <strong>Genere:</strong> {{ details.genres | genreList }}
   </p>
 
-  <p class="runtime" *ngIf="details.runtime">
+  <p class="runtime" *ngIf="details?.runtime">
     <strong>Durata:</strong> {{ details.runtime }} min
   </p>
 
-  <p class="rating">
+  <p class="rating" *ngIf="details?.vote_average">
     <strong>Valutazione:</strong> ⭐
     {{ details.vote_average | number : "1.1-1" }}
   </p>
@@ -46,11 +46,18 @@
     class="trailer"
     title="Trailer video"
   ></iframe>
+  <app-carrello
+    *ngIf="details"
+    [movie]="details"
+    [user]="loggedUser"
+  ></app-carrello>
 
   <div class="similar" *ngIf="similar?.results?.length">
     <strong>Film simili:</strong>
     <ul>
-      <li *ngFor="let sim of similar.results.slice(0, 3)">
+      <li
+        *ngFor="let sim of similar.results.slice(0, 3); trackBy: trackByUnique"
+      >
         {{ sim.title }}
       </li>
     </ul>

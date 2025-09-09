@@ -65,12 +65,20 @@
 <h3>Carrello 🛒</h3>
 <div *ngIf="cartMovies.length > 0; else noCart" class="movie-list">
   <div *ngFor="let item of cartMovies" class="movie-card">
-    <img
+    <!-- <img
       [src]="item.movie.poster_path"
       alt="{{ item.movie.title }}"
       width="100"
     />
     <p>{{ item.movie.title }} – Quantità: {{ item.quantity }}</p>
+    <a [routerLink]="['/movie', item.movie.id]">Dettagli</a> -->
+    <img
+      [src]="imageBaseUrl + item.movie.poster_path"
+      alt="{{ item.movie.title }}"
+      width="100"
+      class="movie-poster"
+    />
+    <p>Qtà: {{ item.quantity }}</p>
     <a [routerLink]="['/movie', item.movie.id]">Dettagli</a>
   </div>
 </div>

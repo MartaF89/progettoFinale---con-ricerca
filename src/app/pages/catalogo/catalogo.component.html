@@ -50,8 +50,9 @@ CHIAMATE SECONDO CATEGORIA GESTITE CON IL CAROSELLO -->
   </div>
 </div>
 <app-movie-datail-modal
-  *ngIf="selectedMovie"
+  *ngIf="selectedMovie && loggedUser"
   [movie]="selectedMovie"
+  [loggedUser]="loggedUser"
   [ngStyle]="{
     top: modalTop + 'px',
     left: modalLeft + 'px',
